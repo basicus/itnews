@@ -4,29 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.news.it.ds.BaseRss
-import com.news.it.net.RssService
-import com.news.it.net.ServiceBuilder
-import kotlinx.coroutines.*
-import retrofit2.Response
+import com.news.it.model.RssRoot
+import com.news.it.net.ApiServiceBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    private val _rssData = MutableLiveData<Response<BaseRss>>()
+    private val _rssData = MutableLiveData<RssRoot>()
+    private var rssService = ApiServiceBuilder().getRSSService()
 
-    private var rssService: RssService? = null
-
-    val rssData: LiveData<Response<BaseRss>>
+    val rssData: LiveData<RssRoot>
         get() = _rssData
 
-    init {
-        rssService = ServiceBuilder().getRSSService()
-    }
-
-
-    fun getData(){
+    fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
-            _rssData.postValue(rssService?.getData()?.execute())
+            try {
+                val response = rssService.getData()
+                if (response.isSuccessful) {
+                    _rssData.postValue(response.body())
+                }
+            } catch (ex: Exception) {
+
+            }
         }
     }
 }

@@ -10,18 +10,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ServiceBuilder {
+class ApiServiceBuilder {
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    fun getRSSService(): RssService {
+    fun getRSSService(): RssRetrofitService {
         val dataClient = OkHttpClient.Builder().apply {
             addInterceptor(loggingInterceptor)
-            connectTimeout(30, TimeUnit.SECONDS)
-            writeTimeout(30, TimeUnit.SECONDS)
-            readTimeout(30, TimeUnit.SECONDS)
+            connectTimeout(5, TimeUnit.SECONDS)
+            writeTimeout(5, TimeUnit.SECONDS)
+            readTimeout(5, TimeUnit.SECONDS)
         }.build()
 
         val xmlModule = JacksonXmlModule()
@@ -43,6 +43,6 @@ class ServiceBuilder {
             baseUrl("https://vc.ru/rss/")
             client(dataClient)
             addConverterFactory(JacksonConverterFactory.create(xmlMapper))
-        }.build().create(RssService::class.java)
+        }.build().create(RssRetrofitService::class.java)
     }
 }
