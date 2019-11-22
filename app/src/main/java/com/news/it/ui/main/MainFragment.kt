@@ -9,11 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.news.it.R
 import com.news.it.model.NewsItem
 import com.news.it.model.RssRoot
-import com.news.it.view.NumSquareView
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
