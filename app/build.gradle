@@ -29,6 +29,10 @@ android {
     packagingOptions {
         pickFirst 'META-INF/services/javax.xml.stream.XMLInputFactory'
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -67,7 +71,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_xver"
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'android.arch.work:work-runtime:1.0.1'
