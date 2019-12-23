@@ -17,8 +17,7 @@ class NewsViewHolder(view_: View) : RecyclerView.ViewHolder(view_) {
     private val rssState: RssStateView = view_.rssState
 
     fun bind(
-        news: NewsItem,
-        onClick: (Int?) -> Unit
+        news: NewsItem
     ) {
         titleTV.text = news.title
         descriptionTV.text = news.imageDesc
@@ -28,6 +27,9 @@ class NewsViewHolder(view_: View) : RecyclerView.ViewHolder(view_) {
         //todo: "test filed"
         val read = if (news.read) NewsState.read else NewsState.new
         rssState.setState(read)
-        view.setOnClickListener { onClick(0) }
+    }
+
+    fun setOnClickListener(onClick: () -> Unit){
+        view.setOnClickListener { onClick() }
     }
 }

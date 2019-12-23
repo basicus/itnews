@@ -169,7 +169,7 @@ class RssStateView : View {
         cal.time = date ?: Date()
         monthDate = dayFormat.format(cal.time)
         month = monthFormat.format(cal.time)
-        invalidateView()
+        invalidate()
     }
 
     fun setState(state: NewsState) {
@@ -180,11 +180,6 @@ class RssStateView : View {
 
         strokePaint.color = color
         headerPaint.color = color
-        invalidateView()
-    }
-
-    private fun invalidateView() {
-        requestLayout()
         invalidate()
     }
 }

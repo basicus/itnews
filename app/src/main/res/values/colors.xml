@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#33691e</color>
+    <color name="colorPrimaryDark">#003d00</color>
+    <color name="colorAccent">#629749</color>
 
     <color name="newsReadState">#5A5757</color>
-    <color name="newsNewState">#00CBAF</color>
+    <color name="newsNewState">#33691e</color>
     <color name="separator">#4C4C4C</color>
 
 </resources>

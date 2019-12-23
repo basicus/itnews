@@ -22,12 +22,17 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(items[position], onNewsClick)
+        holder.bind(items[position])
+        holder.setOnClickListener { onNewsClick(position) }
     }
 
     fun updateData(models: List<NewsItem>) {
         items = models
         notifyDataSetChanged()
+    }
+
+    fun getItem(pos: Int): NewsItem {
+        return items[pos]
     }
 
     override fun getItemCount(): Int {
