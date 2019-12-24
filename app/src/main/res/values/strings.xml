@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">itnews</string>
     <string name="load_btn">Загрузить</string>
+    <string name="main_frag_load_error">Ошибка загрузки</string>
+    <string name="web_view_error">Ошибка, невозможно отобразить страницу</string>
+    <string name="web_view_default_title">Новость</string>
 </resources>

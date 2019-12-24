@@ -38,12 +38,6 @@ class CommonWebviewActivity : AppCompatActivity() {
         showContent()
     }
 
-
-    private fun showBackButton() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-    }
-
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
         commonWebContentPB.max = 100
@@ -53,7 +47,7 @@ class CommonWebviewActivity : AppCompatActivity() {
                 commonWebContentPB?.run {
                     commonWebContentPB.progress = progress
                     if (progress == 100) {
-                        commonWebContentPB.visibility = View.INVISIBLE
+                        commonWebContentPB.visibility = View.GONE
                     }
                 }
             }
@@ -66,7 +60,7 @@ class CommonWebviewActivity : AppCompatActivity() {
         if (url.isNotBlank()) {
             commonWebContentWV.loadUrl(url)
         } else {
-            showSnack("Ошибка, невозможно отобразить страницу")
+            showSnack(getString(R.string.web_view_error))
         }
     }
 
@@ -75,11 +69,11 @@ class CommonWebviewActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun getIntent(context: Context, title: String, url: String): Intent {
+        fun start(context: Context, title: String, url: String) {
             val intent = Intent(context, CommonWebviewActivity::class.java)
             intent.putExtra(TITLE, title)
             intent.putExtra(URL, url)
-            return intent
+            context.startActivity(intent)
         }
     }
 }
